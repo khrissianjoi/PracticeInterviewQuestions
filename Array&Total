@@ -1,0 +1,37 @@
+def main():
+	n_testcase = int(input())
+
+	for n in range(n_testcase):
+		size, total = input().strip().split()
+		size, total = int(size), int(total)
+		array = input()
+		array = [int(i) for i in array.strip().split()]
+		i = 0
+		j = 2 
+		while j < len(array)+1 and i >= 0:
+			result = sum(array[i:j])
+			while result < total:
+				j += 1
+				result = sum(array[i:j])
+			while result > total:
+				i += 1
+				result = sum(array[i:j])
+
+			if result == total:
+				print(i+1, j)
+				break
+
+if __name__ == '__main__':
+	main()
+
+# input:
+# 2							testcases
+# 5 12						size, total
+# 1 2 3 7 5
+# output:
+# 2 4						position 2, position 4, sum[1:4] == total (changed to suit python syntax index)
+# input:
+# 10 15
+# 1 2 3 4 5 6 7 8 9 10
+# output:
+# 1 5
