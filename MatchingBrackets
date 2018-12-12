@@ -1,0 +1,42 @@
+import sys
+
+class Stack:
+	def __init__(self):
+		self.items = []
+
+	def is_empty(self):
+		return self.items == []
+
+	def push(self, item):
+		self.items.append(item)
+
+	def pop(self):
+		return self.items.pop()
+
+def main():
+	line = sys.stdin.readline()
+	lines = line.strip().split()
+	answer = True
+	opening = Stack()
+	for bracket in lines:
+		if bracket in '([{':
+			opening.push(bracket)
+		elif bracket in ')]}':
+			to_match = opening.pop()
+			if to_match == '(' and bracket == ')':
+				continue
+			elif to_match == '[' and bracket ==']':
+				continue
+			elif to_match == '{' and bracket == '}':
+				continue
+			else:
+				answer = False
+				break
+
+	print(answer)
+  
+if __name__ == '__main__':
+	main()
+ 
+# ( (  { ( } ) ( [ ] )    False
+#( (  { } ( ) ) ( [ ] )   True
