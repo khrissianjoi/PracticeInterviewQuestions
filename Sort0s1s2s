@@ -1,0 +1,30 @@
+def main():
+	n_testcase = int(input())
+
+	for n in range(n_testcase):
+		size = int(input())
+		array = input().strip().split()
+		zero, one, two = [], [], []
+		for number in array:
+			if number == '0':
+				zero.append(number)
+			elif number == '1':
+				one.append(number)
+			else:
+				two.append(number)
+		string = '{} {} {}'.format(' '.join(zero), ' '.join(one), ' '.join(two))
+		print(string)
+if __name__ == '__main__':
+	main()
+
+
+# input:
+# 2
+# 5
+# 0 2 1 1 0
+# output:
+# 0 0 1 1 2
+# input:
+# 7
+# 2 1 1 0 0 2 2
+# 0 0 1 1 2 2 2
