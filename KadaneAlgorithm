@@ -1,0 +1,32 @@
+def main():
+	n_testcase = int(input())
+
+	for n in range(n_testcase):
+		size = int(input())
+		array = [int(i) for i in input().strip().split()]
+		array = sorted(array)
+		maximum = 0
+		i = len(array)-1
+		j = 0
+		if array[i] > 0:
+			while i > -1 and array[i] > 0:
+				maximum += array[i]
+				i -= 1
+		elif array[-1] <= 0:
+			maximum = array[-1]
+		print(maximum)
+
+if __name__ == '__main__':
+	main()
+
+# input:
+# 2							testcases
+# 2							size
+# -9 0
+# output:
+# 0							position 2, position 4, sum[1:4] == total (changed to suit python syntax index)
+# input:
+# 5
+# -6 0 -2 1 3 4
+# output:
+# 8
